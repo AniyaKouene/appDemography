@@ -41,7 +41,7 @@ class SearchBar extends Component {
   }
 
   render() {
-    return <div className="p-4">{this.renderSelectBox()}</div>;
+    return <div className="row p-4">{this.renderSelectBox()}</div>;
   }
 }
 

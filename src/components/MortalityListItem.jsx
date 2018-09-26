@@ -3,7 +3,7 @@ import Flag from "./Flag";
 import { ColumnChart } from "react-chartkick";
 const xTitle = "age";
 const yTitle = "pourcentage mortalité";
-window.Chart = require("chart.js");
+window.Chart = require('chart.js');
 
 const MortalityListItem = ({mortality}) => {
     const formatMortalityMale= formatMortalityData(mortality.male)
@@ -13,15 +13,15 @@ const MortalityListItem = ({mortality}) => {
       <td>
         <Flag country={mortality.country} className="flag_small" />
       </td>
-      <td className="col-md-6">
+      <td >
         <ColumnChart
           xtitle={xTitle}
           ytitle={yTitle}
           data={formatMortalityMale} max={30}
         />
       </td>
-      <td className="col-md-6">
-        <ColumnChart
+      <td>
+        <ColumnChart 
           xtitle={xTitle}
           ytitle={yTitle}
           data={formatMortalityFemale} max={30}

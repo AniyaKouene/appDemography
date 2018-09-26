@@ -12,7 +12,7 @@ export const getCountries = () => {
         axios(
             `${API_END_POINT}countries`
         ).then(
-            function (res) {                
+            function (res) {
                 dispatch({
                     type: GET_COUNTRIES,
                     payload: res.data.countries
@@ -27,26 +27,24 @@ export const getCountries = () => {
     }
 }
 
-export const getMortality = (country) =>{
-    return function (dispatch){
+export const getMortality = (country) => {
+    return function (dispatch) {
         return axios(
             `${API_END_POINT}mortality-distribution/${country}/male/${DEFAULT_PARAM}`
-        ).then((resMale) => {  
+        ).then((resMale) => {
             axios(
                 `${API_END_POINT}mortality-distribution/${country}/female/${DEFAULT_PARAM}`
             ).then((resFemale) => {
-                 dispatch(
-                     {
-                         type: GET_MORTALITY,
-                         payload: {
-                             country: country,
-                             male: resMale.data.mortality_distribution,
-                             female: resFemale.data.mortality_distribution,
-                         }
-                     }
-                 )
-    
-            })    
+                dispatch({
+                    type: GET_MORTALITY,
+                    payload: {
+                        country: country,
+                        male: resMale.data.mortality_distribution,
+                        female: resFemale.data.mortality_distribution,
+                    }
+                })
+
+            })
         })
     }
 }

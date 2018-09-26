@@ -6,13 +6,13 @@ import { connect } from "react-redux";
 import MortalityListItem from "../components/MortalityListItem";
 
 class MortalityList extends Component {
-    componentWillMount(){
-        this.props.getMortality(this.props.defaultCountry)
-    }
+  componentWillMount() {
+    this.props.getMortality(this.props.defaultCountry);
+  }
   renderMortalities() {
     const { mortalities } = this.props;
     return mortalities.map(data => {
-      return <MortalityListItem key={data.country} mortality={data}/>;
+      return <MortalityListItem key={data.country} mortality={data} />;
     });
   }
 
@@ -20,17 +20,19 @@ class MortalityList extends Component {
     console.log(this.props.mortalities);
 
     return (
-      <div>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Pays</th>
-              <th className="col-md-6">Hommes</th>
-              <th className="col-md-6">Femmes</th>
-            </tr>
-          </thead>
-          <tbody>{this.renderMortalities()}</tbody>
-        </table>
+      <div className="row justify-content-center">
+        <div class="table-responsive-md">
+          <table className="table table-borderless">
+            <thead className="thead-dark">
+              <tr>
+                <th scope="col">Pays</th>
+                <th scope="col">Hommes</th>
+                <th scope="col">Femmes</th>
+              </tr>
+            </thead>
+            <tbody>{this.renderMortalities()}</tbody>
+          </table>
+        </div>
       </div>
     );
   }
@@ -42,6 +44,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({getMortality}, dispatch)
-  };
-export default connect(mapStateToProps, mapDispatchToProps)(MortalityList);
+  return bindActionCreators({ getMortality }, dispatch);
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MortalityList);
